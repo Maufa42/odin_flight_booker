@@ -1,0 +1,18 @@
+
+
+
+<h1>Search Flights</h1>
+
+<%=form_with model: @flight do |f| %>
+
+<%= f.label "From"%>
+<%= f.collection_select :arrival_id, Airport.all, :id, :code,{}%>
+<%= f.label "To"%>
+<%= f.collection_select :departure_id, Airport.all, :id, :code,{}%>
+<%=f.label "Flight Date:"%>
+      <%= f.select(:departure_time, Flight.pluck(:departure_time).uniq, {}, { "type": "date"})%>
+    <div>
+      <%= f.submit "Search for Flights" %>
+    </div>
+<% end %>
+

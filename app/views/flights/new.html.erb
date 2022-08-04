@@ -1,0 +1,11 @@
+<h1>Search Flights</h1>
+
+<%=form_with model: @flight do |f| %>
+
+<%= f.label "From"%>
+<%= f.collection_select :arrival_id, Airport.all, :id, :code,{}%>
+<%= f.label "To"%>
+<%= f.collection_select :departure_id, Airport.all, :id, :code,{}%>
+<%= f.submit%>
+
+<% end %>

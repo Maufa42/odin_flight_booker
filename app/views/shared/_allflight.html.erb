@@ -1,0 +1,27 @@
+<h1>All Flights</h1>
+
+<table class="table" border = 1.0>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Arrival</th>
+        <th scope="col">Departure</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Select</th>
+      </tr>
+    </thead>
+  <% @flights.each do |f|%>
+
+    <tbody >
+      <tr>
+        <th scope="row"></th>
+        <td><%= f.arrival.code %></td>
+        <td><%=f.departure.code%></td>
+        <td><%=f.arrival_time%></td>
+        
+      </tr>
+    </tbody>
+  <% end %>
+
+</table>
+
