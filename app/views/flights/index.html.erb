@@ -1,18 +1,58 @@
-
-
-
 <h1>Search Flights</h1>
 
-<%=form_with model: @flight do |f| %>
+  <%= form_tag("flights", method: "get") do %>
+    <%# This Will create an Array of @airport and @dates %>
+  <% @airports = Airport.all.map{|ap| [ap.code,ap.id]}.uniq{|ap| ap[0]} %>
+  <% @flight_dates = Flight.all.map{|ft| [ft.arrival_time.to_date,ft.arrival_time]} %>
+  <% @seats = [[1,1],[2,2],[3,3],[4,4]] %>
+  <%# <% @flight_dates = Flight.all.map{|flight| [flight.arrival_time.to_date,flight.arrival_time]}.uniq{|flight| flight[0]} %> 
 
-<%= f.label "From"%>
-<%= f.collection_select :arrival_id, Airport.all, :id, :code,{}%>
-<%= f.label "To"%>
-<%= f.collection_select :departure_id, Airport.all, :id, :code,{}%>
-<%=f.label "Flight Date:"%>
-      <%= f.select(:departure_time, Flight.pluck(:departure_time).uniq, {}, { "type": "date"})%>
-    <div>
-      <%= f.submit "Search for Flights" %>
-    </div>
+  <%# options_for_select take arrays as input and list down in drop down way %>
+  <%= label_tag(:arrival_id, "From: ") %>
+  <%= select_tag(:arrival_id,options_for_select(@airports)) %><br />
+
+  <%= label_tag(:departure_id, "To: ") %>
+  <%= select_tag(:departure_id,options_for_select(@airports))%><br />
+  
+   <%= label_tag(:arrival_time, "Date: ") %>
+  <%= select_tag(:arrival_time,options_for_select(@flight_dates))%><br />
+  <%= label_tag(:passenger_seats, "Seats")%>
+  <%= select_tag(:passenger_seats,options_for_select(@seats),{prompt: "No of passengers?"}) %><br />
+
+  <%= submit_tag("Search") %>
+  
+  <% end %>
+
+<h3>Fill the booking details </h3>
+<% unless @available_flights.nil? %>
+  <%= form_with url: "/bookings/new", method: :get do |form| %>
+    <% @available_flights.each do |flight| %>
+    booking_destination:   <%= form.label :booking_destination,flight.arrival.code %><br> 
+    booking_departure:     <%= form.label :booking_departure, flight.departure.code %><br>
+
+
+      <span>Want to book ticket click radio button:<span> <%= form.radio_button :flight_id, flight.id %><br>
+    <% end %>
+    <%= form.hidden_field :seat, value: @seat %>
+    <%= form.submit "Book" %>
+  <%end %>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
