@@ -1,5 +1,5 @@
 <h1>Bookings</h1>
-
+<% @count.times  do %>
 <%= form_with model: @booking,url: bookings_path do |f| %>
   <% i = 1 %>
   <%= f.fields_for :passengers do |passenger| %>
@@ -13,3 +13,4 @@
   <%= f.hidden_field :flight_id, value: @flight.id %>
   <%= f.submit "Confirm Tickets" %>
 <% end %>
+<%end%>

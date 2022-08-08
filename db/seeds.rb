@@ -9,18 +9,23 @@
 
 
 
-Flight.destroy_all
+# Flight.destroy_all
 
 # codes=%w[AMD BLR CCU MAA DEL HYD BOM VNS PUT]
 # codes.each do |codes| 
 #     Airport.create(code: "#{codes}")
 # end
 
-# Flight.create(arrival_id: 3, departure_id: 4, arrival_time: DateTime.now, departure_time: DateTime.now)
-Flight.create(arrival_id: 109, departure_id: 113, arrival_time: "2022-08-06 16:14:00.000000000 +0000", departure_time: "2022-09-06 16:14:00.000000000 +0000")
-Flight.create(arrival_id: 110, departure_id: 114, arrival_time: "2022-09-06 16:14:00.000000000 +0000", departure_time: "2022-09-15 16:14:00.000000000 +0000")
-Flight.create(arrival_id: 111, departure_id: 115, arrival_time: "2022-10-06 16:14:00.000000000 +0000", departure_time: "2022-10-09 16:14:00.000000000 +0000")
-Flight.create(arrival_id: 112, departure_id: 116, arrival_time: "2022-11-15 16:14:00.000000000 +0000", departure_time: "2022-11-20 16:14:00.000000000 +0000")
+Flight.create(arrival_id: 3, departure_id: 4, arrival_time: DateTime.now, departure_time: DateTime.now)
+Flight.create(arrival_id: 1, departure_id: 2, arrival_time: "2022-08-06 16:14:00.000000000 +0000", departure_time: "2022-09-06 16:14:00.000000000 +0000")
+Flight.create(arrival_id: 2, departure_id: 3, arrival_time: "2022-09-06 16:14:00.000000000 +0000", departure_time: "2022-09-15 16:14:00.000000000 +0000")
+Flight.create(arrival_id: 3, departure_id: 4, arrival_time: "2022-10-06 16:14:00.000000000 +0000", departure_time: "2022-10-09 16:14:00.000000000 +0000")
+Flight.create(arrival_id: 5, departure_id: 8, arrival_time: "2022-11-15 16:14:00.000000000 +0000", departure_time: "2022-11-20 16:14:00.000000000 +0000")
+
+
+# Booking.create(flight_id: 1,name: "Aryan", email: "aryan.pal@gmail.com")
+# Booking.create(flight_id: 1,name: "Adity", email: "aditya@gmail.com")
+# Booking.create(flight_id: 1,name: "Raj", email: "aditya@gmail.com")
 
 
 # airports =Airport.all.to_a.permutation(2).to_a

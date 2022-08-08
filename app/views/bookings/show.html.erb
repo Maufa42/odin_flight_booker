@@ -1,1 +1,31 @@
 <h1>Confirmed Bookings</h1>
+<h1>All Flights</h1>
+
+<table class="table" border = 1.0>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Arrival</th>
+        <th scope="col">Departure</th>
+        <th scode="col">Name</th>
+     
+      </tr>
+    </thead>
+  <% @bookings.each do |booking|%>
+    <%# <% @passengers.each do |passenger| %> 
+    <tbody >
+      <tr>
+        <td scope="row"></td>
+        <td><%= booking.flight.arrival.code %></td>
+        <td><%= booking.flight.departure.code%></td>
+        <td><% booking.passengers.each do |p|%> 
+        <%=p.name%>
+        <%end%></td>
+        <%# <td><%= %> 
+      </tr>
+    </tbody>
+  <% end %>
+    <%# <% end %> 
+
+</table>
+
